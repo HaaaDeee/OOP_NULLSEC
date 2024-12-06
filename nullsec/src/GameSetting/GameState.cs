@@ -1,12 +1,11 @@
-using System ;
-using System .IO;
-using System . Runtime . Serialization . Formatters . Binary ;
-
+using System;
 
 public class GameState
 {
-    // Contoh properti GameState, tambahkan properti sesuai kebutuhan Anda
-    public string? PlayerName { get; set; }
-    public int Level { get; set; }
-    public int Score { get; set; }
+    public string? CharacterName { get ; set ; }
+    public string? TechTree { get ; set ; }
+    public int SkillPoints { get ; set ; }
+    public int Health { get ; set ; }
+    public int Attack { get ; set ; }
+    public int Defense { get ; set ; }
 }

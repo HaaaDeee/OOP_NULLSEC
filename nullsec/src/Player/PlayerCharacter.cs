@@ -1,7 +1,7 @@
 using System ;
 public class PlayerCharacter
 {
-    private static PlayerCharacter _instance ; // Singleton instance
+    private static PlayerCharacter? _instance ; // Singleton instance
     public string CharacterName { get ; private set ; }
     public string TechTree { get ; private set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
     public int Level { get ; private set ; }

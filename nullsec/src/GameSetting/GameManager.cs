@@ -1,33 +1,44 @@
-using System ;
-using System .IO;
-using System . Runtime . Serialization . Formatters . Binary ;
+using System;
+using System.IO;
+using System.Text.Json;
 
 public static class GameManager
 {
-    public static void SaveGame ( GameState state , string filepath )
+    public static void SaveGame(GameState state, string filepath)
     {
-        FileStream file = File . Create ( filepath );
-        BinaryFormatter bf = new BinaryFormatter ();
-        bf. Serialize (file , state );
-        file . Close ();
-        Console . WriteLine (" Game ␣ saved .");
+        try
+        {
+            string json = JsonSerializer.Serialize(state);
+            File.WriteAllText(filepath, json);
+            Console.WriteLine("Game saved.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving game: {ex.Message}");
+        }
     }
 
-    public static GameState LoadGame ( string filepath )
+    public static GameState? LoadGame(string filepath)
     {
-        if ( File . Exists ( filepath ))
+        try
         {
-            FileStream file = File . Open ( filepath , FileMode . Open );
-            BinaryFormatter bf = new BinaryFormatter ();
-            GameState state = ( GameState )bf. Deserialize ( file );
-            file . Close ();
-            Console . WriteLine (" Game ␣ loaded .");
-            return state ;
+            if (File.Exists(filepath))
+            {
+                string json = File.ReadAllText(filepath);
+                GameState? state = JsonSerializer.Deserialize<GameState>(json);
+                Console.WriteLine("Game loaded.");
+                return state;
+            }
+            else
+            {
+                Console.WriteLine("No saved game found.");
+                return null;
+            }
         }
-        else
+        catch (Exception ex)
         {
-            Console . WriteLine ("No␣ saved ␣ game ␣ found .");
-            return null ;
+            Console.WriteLine($"Error loading game: {ex.Message}");
+            return null;
         }
     }
 }

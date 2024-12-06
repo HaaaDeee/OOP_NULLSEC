@@ -89,4 +89,26 @@ public class PlayerCharacter
         Console . WriteLine ($"{ CharacterName }␣ attacks ␣ with ␣{ Attack } power !");
         // Additional logic for interacting with enemy
     }
+
+    public void getBuff(string type, int buff)
+    {
+        switch (type.ToLower())
+        {
+            case "health":
+                Health += buff;
+                Console.WriteLine($"{CharacterName} increased Health to {Health}");
+                break;
+            case "attack":
+                Attack += buff;
+                Console.WriteLine($"{CharacterName} increased Attack to {Attack}");
+                break;
+            case "defense":
+                Defense += buff;
+                Console.WriteLine($"{CharacterName} increased Defense to {Defense}");
+                break;
+            default:
+                Console.WriteLine("Invalid buff type.");
+                return;
+        }
+    }
 }

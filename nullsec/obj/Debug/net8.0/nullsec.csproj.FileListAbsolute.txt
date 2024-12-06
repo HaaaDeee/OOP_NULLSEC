@@ -1,0 +1,5 @@
+D:\kuliah\semester 3\OOP\Perkuliahan\RPG2\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.GeneratedMSBuildEditorConfig.editorconfig
+D:\kuliah\semester 3\OOP\Perkuliahan\RPG2\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.AssemblyInfoInputs.cache
+D:\kuliah\semester 3\OOP\Perkuliahan\RPG2\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.AssemblyInfo.cs
+D:\kuliah\semester 3\OOP\Perkuliahan\RPG2\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.csproj.CoreCompileInputs.cache
+D:\kuliah\semester 3\OOP\Perkuliahan\RPG2\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.sourcelink.json

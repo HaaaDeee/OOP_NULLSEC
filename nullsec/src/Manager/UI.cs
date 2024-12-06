@@ -2,7 +2,6 @@ using System;
 
 public class UI
 {
-    public static UI? instance = null;
     public static UI Instance()
     {
         if (instance == null)
@@ -14,6 +13,7 @@ public class UI
             return instance;
         }
     }
+    private static UI? instance = null;
 
     public static int BattleManager(PlayerCharacter player, Enemy enemy)
     {

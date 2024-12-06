@@ -8,7 +8,7 @@ public class AttackBoost : Item
     public override string Name => " Attack ␣ Boost ";
     public override void Use ( PlayerCharacter player )
     {
-        player . Attack += 5;
+        player.getBuff("attack", 5);
         Console . WriteLine ($"{ player . CharacterName }␣ uses ␣ Attack ␣ Boost .␣ Attack ␣is␣now␣{ player . Attack }");
     }
 }

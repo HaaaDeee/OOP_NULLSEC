@@ -16,6 +16,6 @@ public class EnemyAI
     }
     public void ExecuteAttack ( Enemy enemy , PlayerCharacter player)
     {
-        _attackStrategy . ExecuteAttack (enemy , player );
+        _attackStrategy.ExecuteAttack( enemy , player );
     }
 }

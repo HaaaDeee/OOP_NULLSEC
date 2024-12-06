@@ -18,6 +18,6 @@ public class UI
     public static int BattleManager(PlayerCharacter player, Enemy enemy)
     {
         Console.WriteLine("");
-        
+        return 0;
     }
 }

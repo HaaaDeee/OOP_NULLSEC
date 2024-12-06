@@ -34,7 +34,7 @@ public class PlayerCharacter
     {
         Level++;
         SkillPoints++;
-        Console.WriteLine ($"{ CharacterName } leveled up to { Level }! Skill Points :␣{ SkillPoints }");
+        Console.WriteLine ($"{ CharacterName } leveled up to { Level }! Skill Points : { SkillPoints }");
     }
     // Method to allocate skill points to increase stats
     public void AllocateSkillPoint ( string skill )
@@ -45,48 +45,48 @@ public class PlayerCharacter
             {
                 case " health ":
                 Health += 10;
-                Console . WriteLine ($"{ CharacterName }␣ increased␣ Health ␣to␣{ Health }");
+                Console.WriteLine ($"{ CharacterName } increased Health to { Health }");
                 break ;
                 case " attack ":
                 Attack += 2;
-                Console . WriteLine ($"{ CharacterName }␣ increased␣ Attack ␣to␣{ Attack }");
+                Console.WriteLine ($"{ CharacterName } increased Attack to { Attack }");
                 break ;
                 case " defense ":
                 Defense += 2;
-                Console . WriteLine ($"{ CharacterName }␣ increased␣ Defense ␣to␣{ Defense }");
+                Console.WriteLine ($"{ CharacterName } increased Defense to { Defense }");
                 break ;
                 default :
-                Console . WriteLine (" Invalid ␣ skill ␣ choice .");
+                Console.WriteLine (" Invalid skill choice!");
                 return ;
             }
             SkillPoints --;
         }
         else
         {
-            Console . WriteLine ("No␣ skill ␣ points ␣ available .");
+            Console.WriteLine ("No skill points available.");
         }
     }
-    // Method to display the character ’s current status
+    // Method to display the character’s current status
     public void DisplayStatus ()
     {
-        Console.WriteLine ($" Name :␣{ CharacterName },␣ Tech ␣ Tree :␣{TechTree },␣ Level :␣{ Level },␣ Health :␣{ Health },␣ Attack :␣{Attack },␣ Defense :␣{ Defense },␣ Skill ␣ Points :␣{SkillPoints }");
+        Console.WriteLine ($" Name : { CharacterName }, Tech Tree : {TechTree }, Level : { Level }, Health : { Health }, Attack : {Attack }, Defense : { Defense }, Skill Points : { SkillPoints }");
     }
     // Method for taking damage
     public void TakeDamage (int damage )
     {
         int damageTaken = Math .Max( damage - Defense , 0);
         Health -= damageTaken ;
-        Console . WriteLine ($"{ CharacterName }␣ took ␣{ damageTaken }␣damage .␣ Health ␣is␣now ␣{ Health }");
+        Console . WriteLine ($"{ CharacterName } took { damageTaken } damage. Health is now { Health }");
         if ( Health <= 0)
         {
-            Console . WriteLine ($"{ CharacterName }␣has␣ been ␣ defeated.");
+            Console . WriteLine ($"{ CharacterName } has been defeated.");
             // Handle character defeat logic
         }
     }
     // Method for attacking an enemy
     public void AttackEnemy ()
     {
-        Console . WriteLine ($"{ CharacterName }␣ attacks ␣ with ␣{ Attack } power !");
+        Console . WriteLine ($"{ CharacterName } attacks with { Attack } power!");
         // Additional logic for interacting with enemy
     }
 

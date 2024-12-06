@@ -13,3 +13,18 @@ C:\Users\User\Documents\OOP-kuliah_Continuance\OOP_NULLSEC\nullsec\obj\Debug\net
 C:\Users\User\Documents\OOP-kuliah_Continuance\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.pdb
 C:\Users\User\Documents\OOP-kuliah_Continuance\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.genruntimeconfig.cache
 C:\Users\User\Documents\OOP-kuliah_Continuance\OOP_NULLSEC\nullsec\obj\Debug\net8.0\ref\nullsec.dll
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.AssemblyInfoInputs.cache
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.AssemblyInfo.cs
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.csproj.CoreCompileInputs.cache
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.sourcelink.json
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.dll
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\refint\nullsec.dll
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.pdb
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\bin\Debug\net8.0\nullsec.exe
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\bin\Debug\net8.0\nullsec.deps.json
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\bin\Debug\net8.0\nullsec.runtimeconfig.json
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\bin\Debug\net8.0\nullsec.dll
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\bin\Debug\net8.0\nullsec.pdb
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\nullsec.genruntimeconfig.cache
+C:\Users\maxwe\OneDrive\Desktop\Storage\Semester 3\Object Oriented Programming\Teori\Proyek\OOP_NULLSEC\nullsec\obj\Debug\net8.0\ref\nullsec.dll

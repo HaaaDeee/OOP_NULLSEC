@@ -6,6 +6,6 @@ public class Sentinel : Enemy
     public override int AttackPower => 15;
     public override void Attack ()
     {
-        Console . WriteLine (" Sentinel ␣ attacks ␣ with ␣ military ␣precision !");
+        Console.WriteLine(" Sentinel attacks with military precision!");
     }
 }

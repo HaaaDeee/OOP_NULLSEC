@@ -7,6 +7,6 @@ public class Wolf : Enemy
     public override int AttackPower => 25;
     public override void Attack ()
     {
-        Console . WriteLine (" Wolf ␣ strikes ␣ swiftly ␣and ␣ accurately !");
+        Console.WriteLine ("Wolf strikes swiftly and accurately!");
     }
 }

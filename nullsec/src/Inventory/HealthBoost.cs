@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 public class HealthBoost : Item
 {
-    public override string Name => " Health ␣ Boost ";
+    public override string Name => " Health Boost ";
     public override void Use ( PlayerCharacter player )
     {
-        player.getBuff("attack", 20);
-        Console . WriteLine ($"{ player . CharacterName }␣ uses ␣ Health ␣Boost .␣ Health ␣is␣now␣{ player . Health }");
+        player.getBuff("health", 20);
+        Console.WriteLine ($"{ player.CharacterName } uses Health Boost. Health is now { player.Health }");
     }
 }

@@ -132,3 +132,14 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+nullsec/bin/Debug/net8.0/nullsec.dll
+nullsec/bin/Debug/net8.0/nullsec.exe
+nullsec/bin/Debug/net8.0/nullsec.pdb
+nullsec/obj/Debug/net8.0/apphost.exe
+nullsec/obj/Debug/net8.0/nullsec.AssemblyInfo.cs
+nullsec/obj/Debug/net8.0/nullsec.AssemblyInfoInputs.cache
+nullsec/obj/Debug/net8.0/nullsec.dll
+nullsec/obj/Debug/net8.0/nullsec.pdb
+nullsec/obj/Debug/net8.0/nullsec.sourcelink.json
+nullsec/obj/Debug/net8.0/ref/nullsec.dll
+nullsec/obj/Debug/net8.0/refint/nullsec.dll

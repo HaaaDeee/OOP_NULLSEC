@@ -2,7 +2,7 @@ using System;
 
 public static class EnemyFactory
 {
-    public static Enemy CreateEnemy ( string enemyType )
+    public static Enemy CreateEnemy ( string enemyType, PlayerCharacter player)
     {
         return enemyType . ToLower () switch
         {

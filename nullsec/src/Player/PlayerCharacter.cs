@@ -6,6 +6,7 @@ public class PlayerCharacter
     public string TechTree { get ; private set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
     public int Level { get ; private set ; }
     public int SkillPoints { get ; private set ; }
+    public int MaxHealth { get ; private set ; }
     public int Health { get ; private set ; }
     public int Attack { get ; private set ; }
     public int Defense { get ; private set ; }

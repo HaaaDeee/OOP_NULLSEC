@@ -1,7 +1,7 @@
 using System ;
 public class PlayerCharacter
 {
-    private static PlayerCharacter? _instance ; // Singleton instance
+    private static PlayerCharacter? instance ; // Singleton instance
     public string CharacterName { get ; private set ; }
     public string TechTree { get ; private set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
     public int Level { get ; private set ; }
@@ -19,15 +19,16 @@ public class PlayerCharacter
         Health = 100;
         Attack = 10;
         Defense = 5;
+        instance = this;
     }
     // Singleton instance retrieval method
     public static PlayerCharacter GetInstance ( string characterName , string techTree )
     {
-        if ( _instance == null )
+        if ( instance == null )
         {
-            _instance = new PlayerCharacter( characterName, techTree );
+            instance = new PlayerCharacter( characterName, techTree );
         }
-        return _instance ;
+        return instance ;
     }
     // Level up method , increases level and grants skill points
     public void LevelUp ()

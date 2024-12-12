@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\maxwe\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxwe\\OneDrive\\Desktop\\Storage\\Semester 3\\Object Oriented Programming\\Teori\\Proyek\\OOP_NULLSEC\\nullsec\\nullsec.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\OOP-kuliah_Continuance\\OOP_NULLSEC\\nullsec\\nullsec.csproj",
       "projectName": "nullsec",
-      "projectPath": "C:\\Users\\maxwe\\OneDrive\\Desktop\\Storage\\Semester 3\\Object Oriented Programming\\Teori\\Proyek\\OOP_NULLSEC\\nullsec\\nullsec.csproj",
-      "packagesPath": "C:\\Users\\maxwe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxwe\\OneDrive\\Desktop\\Storage\\Semester 3\\Object Oriented Programming\\Teori\\Proyek\\OOP_NULLSEC\\nullsec\\obj\\",
+      "projectPath": "C:\\Users\\User\\Documents\\OOP-kuliah_Continuance\\OOP_NULLSEC\\nullsec\\nullsec.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Documents\\OOP-kuliah_Continuance\\OOP_NULLSEC\\nullsec\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maxwe\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -64,7 +64,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

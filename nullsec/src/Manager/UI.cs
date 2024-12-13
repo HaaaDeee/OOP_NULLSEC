@@ -123,8 +123,8 @@ public class UI
             tech_tree = Console.ReadLine();
             if (!string.IsNullOrEmpty(playerName)) {
                 if(
-                    (tech_tree.ToLower() != "technician") && (tech_tree.ToLower() != "hacker") &&
-                    (tech_tree.ToLower() != "enforcer") && (tech_tree.ToLower() != "infiltrator"))
+                    (tech_tree.ToLower() == "technician") || (tech_tree.ToLower() == "hacker") ||
+                    (tech_tree.ToLower() == "enforcer") || (tech_tree.ToLower() == "infiltrator"))
                 {
                     break;
                 }
@@ -132,7 +132,8 @@ public class UI
         } while (true);
         Console.WriteLine("\n\"Baiklah, kamu sudah mulai bisa mendapatkan pekerjaan besok hari. Selamat datang. di NULL SEC\" sebut orang tersebut");
         player = PlayerCharacter.GetInstance(playerName, tech_tree);
-        // Dari sini pindah ke UI gameplay
+        Console.Clear();
+        // Dari sini pindah ke UI GameScene
     }
 
     public static void MainMenu() {
@@ -144,24 +145,60 @@ public class UI
         Console.WriteLine("| 2. Lanjut Game Sebelmnya              |");
         Console.WriteLine("| 3. Pilih Save File                    |");
         Console.WriteLine("| 4. Keluar                             |");
-        Console.WriteLine("|-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-|"); 
-        Console.Write    ("  Pilihan anda: ");
+        Console.WriteLine("+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+");
     }
 
     public static void GameScene() {
         int choice = -999;
-        // while(choice != 3) {
-        // }
-        Console.WriteLine("#######################################################");
-        Console.WriteLine("######                                           ######");
-        Console.WriteLine("###                                                 ###");
-        Console.WriteLine("##       1. LIHAT STATUS                             ##");
-        Console.WriteLine("##       2. PILIH MISI                               ##");
-        Console.WriteLine("##       3. LIHAT INVENTORY                          ##");
-        Console.WriteLine("##       4. KELUAR                                   ##");
-        Console.WriteLine("###                                                 ###");
-        Console.WriteLine("######                                           ######");
-        Console.WriteLine("#######################################################");
-        Console.ReadLine();
+        ConsoleKeyInfo input;
+        string[] menus = [
+            "#######################################################",
+            "######                                           ######",
+            "###                                                 ###",
+            "##       1. LIHAT STATUS                             ##",
+            "##       2. PILIH MISI                               ##",
+            "##       3. LIHAT INVENTORY                          ##",
+            "##       4. KELUAR                                   ##",
+            "###                                                 ###",
+            "######                                           ######",
+            "#######################################################"
+        ];
+        while(choice != 4) {
+            for(int i = 0; i<menus.Length; i++) {
+                Console.WriteLine(menus[i]);
+            }
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
+            switch (choice)
+            {
+                case 1:
+                    ShowStatus();
+                    break;
+                case 2:
+                    SelectMission();
+                    break;
+                case 3:
+                    ShowInventory();
+                    break;
+                case 4:
+                    break;
+                default:
+                    Console.WriteLine("    !!PERHATIAN!!\n    Mohon hanya pilih opsi yang tersedia.");
+                    break;
+            }
+            Console.Clear();
+        }
+    }
+
+    private static void ShowStatus() {
+
+    }
+
+    private static void SelectMission() {
+
+    }
+
+    private static void ShowInventory() {
+
     }
 }

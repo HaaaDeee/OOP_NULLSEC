@@ -9,10 +9,12 @@ public class Program
         // Logika main menu
         // Entry point kedalam game
         int choice = -999;
+        ConsoleKeyInfo input;
+        Console.Clear();
         while (choice != 4) {
             UI.MainMenu();
-            string? input = Console.ReadLine();
-            Int32.TryParse(input, out choice);
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
             Console.Clear();
             switch (choice)
             {

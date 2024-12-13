@@ -43,7 +43,6 @@ public class UI
         Int32.TryParse(choice, out int_choice);
         return int_choice;
     }
-}
     
     public static void NewGame() {
         // string[] line1 = {

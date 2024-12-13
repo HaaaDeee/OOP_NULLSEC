@@ -2,15 +2,35 @@ using System;
 using System.IO;
 using System.Text.Json;
 
-public static class GameManager
+/*
+    Game Manager
+    Fungsi utama adalah untuk logika saving dan loading
+    Menggunakan class GameState sebagai holder data yang perlu di-save
+
+    -. Saving
+        State:
+            Update GameState => Serialize JSON => Simpan ke file (overwrite)
+        
+    -. Loading
+        State:
+            Load dari file pilihan => Deserialize JSON => Update GameState
+*/
+
+public class GameManager
 {
-    public static void SaveGame(GameState state, string filepath)
+    GameState gameState = GameState.GetInstance();
+    public void SaveGame(string filepath)
     {
         try
         {
-            string json = JsonSerializer.Serialize(state);
-            File.WriteAllText(filepath, json);
-            Console.WriteLine("Game saved.");
+            if (File.Exists(filepath)) {
+                gameState.UpdateSelf();
+                string json = JsonSerializer.Serialize(gameState);
+                File.WriteAllText(filepath, json);
+                Console.WriteLine("Game saved.");
+            } else {
+                Console.WriteLine("No saved game found.");
+            }
         }
         catch (Exception ex)
         {
@@ -18,7 +38,7 @@ public static class GameManager
         }
     }
 
-    public static GameState? LoadGame(string filepath)
+    public  void LoadGame(string filepath)
     {
         try
         {
@@ -26,19 +46,17 @@ public static class GameManager
             {
                 string json = File.ReadAllText(filepath);
                 GameState? state = JsonSerializer.Deserialize<GameState>(json);
+                gameState.UpdateGame();
                 Console.WriteLine("Game loaded.");
-                return state;
             }
             else
             {
                 Console.WriteLine("No saved game found.");
-                return null;
             }
         }
         catch (Exception ex)
         {
             Console.WriteLine($"Error loading game: {ex.Message}");
-            return null;
         }
     }
 }

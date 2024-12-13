@@ -51,11 +51,12 @@ public class Program
     }
 
     public static void ContinueGame() {
-        Console.Write("Loading Last Savefile");
+        Console.Write("Loading Last Savefile\n{");
         for(int i=0; i<5; i++) {
             Console.Write("=>");
             System.Threading.Thread.Sleep(400);
         }
+        Console.WriteLine("}");
         Console.Clear();
     }
 

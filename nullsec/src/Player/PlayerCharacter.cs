@@ -30,6 +30,11 @@ public class PlayerCharacter
         }
         return instance ;
     }
+    // Overload
+    public static PlayerCharacter GetInstance ()
+    {
+        return instance ;
+    }
     // Level up method , increases level and grants skill points
     public void LevelUp ()
     {

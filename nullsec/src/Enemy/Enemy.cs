@@ -5,5 +5,5 @@ public abstract class Enemy
     public abstract int MaxHealth { get ; set ; }
     public abstract int Health { get ; set ; }
     public abstract int AttackPower { get ; }
-    public abstract void Attack ();
+    public abstract void Attack (PlayerCharacter player);
 }

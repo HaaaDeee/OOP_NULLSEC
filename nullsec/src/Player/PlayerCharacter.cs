@@ -1,4 +1,4 @@
-using System ;
+using System;
 public class PlayerCharacter
 {
     private static PlayerCharacter? instance ; // Singleton instance
@@ -32,7 +32,7 @@ public class PlayerCharacter
         return instance ;
     }
     // Overload
-    public static PlayerCharacter GetInstance ()
+    public static PlayerCharacter? GetInstance ()
     {
         return instance ;
     }
@@ -91,10 +91,21 @@ public class PlayerCharacter
         }
     }
     // Method for attacking an enemy
-    public void AttackEnemy ()
+    public void AttackEnemy (Enemy enemy)
     {
         Console . WriteLine ($"{ CharacterName } attacks with { Attack } power!");
         // Additional logic for interacting with enemy
+        Random random = new Random ();
+        int critical = random.Next(0, 100);
+        if ( critical < 5)
+        {
+            Console . WriteLine ("Critical hit!");
+            enemy.Health -= Attack * 2;
+        }
+        else
+        {
+            enemy.Health -= Attack ;
+        }
     }
 
     public void getBuff(string type, int buff)

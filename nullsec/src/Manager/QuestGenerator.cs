@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 public class QuestGenerator
 {
-    private Quest? quest;
     private string? enemyType;
     private int objective;
-    public void GenerateQuest()
+    public Quest GenerateQuest()
     {
         Random random = new Random();
         int rand = random.Next(1, 4);
@@ -32,6 +31,6 @@ public class QuestGenerator
         {
             throw new Exception("Enemy type is null");
         }
-        quest = new Quest(EnemyFactory.CreateEnemy(enemyType), objective);
+        return new Quest(enemyType, objective);
     }
 }

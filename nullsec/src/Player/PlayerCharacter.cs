@@ -2,13 +2,14 @@ using System ;
 public class PlayerCharacter
 {
     private static PlayerCharacter? instance ; // Singleton instance
-    public string CharacterName { get ; private set ; }
-    public string TechTree { get ; private set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
-    public int Level { get ; private set ; }
-    public int SkillPoints { get ; private set ; }
-    public int Health { get ; private set ; }
-    public int Attack { get ; private set ; }
-    public int Defense { get ; private set ; }
+    public string CharacterName { get ; set ; }
+    public string TechTree { get ; set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
+    public int Level { get ; set ; }
+    public int SkillPoints { get ; set ; }
+    public int MaxHealth { get ; set ; }
+    public int Health { get ; set ; }
+    public int Attack { get ; set ; }
+    public int Defense { get ; set ; }
     // Private constructor to prevent instantiation from outside
     private PlayerCharacter ( string characterName , string techTree)
     {

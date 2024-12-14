@@ -10,6 +10,7 @@ public class PlayerCharacter
     public int Health { get ; set ; }
     public int Attack { get ; set ; }
     public int Defense { get ; set ; }
+    public InventorySystem inventory { get ; set ; }
     // Private constructor to prevent instantiation from outside
     private PlayerCharacter ( string characterName , string techTree)
     {

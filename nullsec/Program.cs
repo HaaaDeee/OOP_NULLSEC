@@ -5,18 +5,17 @@ public class Program
     {
         // Inisialisasi UI
         UI ui = UI.GetInstance();
-        PlayerCharacter player = PlayerCharacter.GetInstance("dawg", "dawg");
 
         // Logika main menu
         // Entry point kedalam game
         int choice = -999;
         ConsoleKeyInfo input;
-        // Console.Clear();
+        Console.Clear();
         while (choice != 4) {
             UI.MainMenu();
             input = Console.ReadKey();
             Int32.TryParse(input.KeyChar.ToString(), out choice);
-            // Console.Clear();
+            Console.Clear();
             switch (choice)
             {
                 case 1:
@@ -26,7 +25,7 @@ public class Program
                         UI.NewGame();
                         UI.GameScene();
                     } else {
-                        // Console.Clear();
+                        Console.Clear();
                     }
                     break;
                 case 2:
@@ -35,7 +34,7 @@ public class Program
                     if(Console.ReadKey().Key == ConsoleKey.Enter) {
                         ContinueGame();
                     } else {
-                        // Console.Clear();
+                        Console.Clear();
                     }
                     break;
                 case 3:
@@ -58,7 +57,7 @@ public class Program
             System.Threading.Thread.Sleep(400);
         }
         Console.WriteLine("}");
-        // Console.Clear();
+        Console.Clear();
     }
 
     public static void LoadGame() {
@@ -73,8 +72,9 @@ public class Program
             Console.WriteLine("4. Kembali ke menu utama");
             input = Console.ReadKey();
             Int32.TryParse(input.KeyChar.ToString(), out choice);
-            // Console.Clear();
+            if(choice != 4) {
+                gameManager.LoadGame(choice);
+            }
         }
-        gameManager.SaveGame(1);
     }
 }

@@ -16,6 +16,17 @@ using System.Text.Json;
             Load dari file pilihan => Deserialize JSON => Update GameState
 */
 
+class GameState
+{
+    public string? CharacterName { get; set; }
+    public string? TechTree { get; set; }
+    public int Level { get; set; }
+    public int SkillPoints { get; set; }
+    public int Health { get; set; }
+    public int Attack { get; set; }
+    public int Defense { get; set; }
+}
+
 public class GameManager
 {
     StreamReader loader;
@@ -26,18 +37,14 @@ public class GameManager
     {
         try
         {
-            // if (File.Exists(filepath)) {
-                Console.WriteLine("Trying to update");
+            if (choice > 0 && choice < 4) {
                 UpdateGameState();
-                Console.WriteLine("Update");
                 string json = JsonSerializer.Serialize(gameState);
-                Console.WriteLine("Serialized json: " + json);
-                saver = new StreamWriter("/src/Saves/savefile1.json");
-                saver.WriteLine(json);
-                Console.WriteLine("Saved");
-            // } else {
-            //     Console.WriteLine("No saved game found.");
-            // }
+                string filepath = "savefile"+choice+".json";
+                File.WriteAllText(filepath, json);
+            } else {
+                Console.WriteLine("No save file found.");
+            }
         }
         catch (Exception ex)
         {
@@ -49,17 +56,14 @@ public class GameManager
     {
         try
         {
-            // if (File.Exists(filepath))
-            // {
-                // string json = File.ReadAllText(filepath);
-                // GameState? state = JsonSerializer.Deserialize<GameState>(json);
+            if (choice > 0 && choice < 4) {
+                string filepath = "savefile"+choice+".json";
+                string json = File.ReadAllText(filepath);
+                gameState = JsonSerializer.Deserialize<GameState>(json);
                 GameStateUpdate();
-                Console.WriteLine("Game loaded.");
-            // }
-            // else
-            // {
-            //     Console.WriteLine("No saved game found.");
-            // }
+            } else {
+                Console.WriteLine("No save file found.");
+            }
         }
         catch (Exception ex)
         {
@@ -70,8 +74,8 @@ public class GameManager
     // Data dari {Player, etc.} mengupdate GameState
     private void UpdateGameState() {
         PlayerCharacter player = PlayerCharacter.GetInstance();
-        gameState.CharacterName = new string(player.CharacterName);
-        gameState.TechTree = new string(player.TechTree);
+        gameState.CharacterName = player.CharacterName;
+        gameState.TechTree = player.TechTree;
         gameState.Level = player.Level;
         gameState.SkillPoints = player.SkillPoints;
         gameState.Health = player.Health;
@@ -82,8 +86,8 @@ public class GameManager
     // Data dari GameState mengupdate {player, etc.}
     private void GameStateUpdate() {
         PlayerCharacter player = PlayerCharacter.GetInstance();
-        player.CharacterName = new string(gameState.CharacterName);
-        player.TechTree = new string(gameState.TechTree);
+        player.CharacterName = gameState.CharacterName;
+        player.TechTree = gameState.TechTree;
         player.Level = gameState.Level;
         player.SkillPoints = gameState.SkillPoints;
         player.Health = gameState.Health;

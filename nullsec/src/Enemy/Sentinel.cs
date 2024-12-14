@@ -14,5 +14,9 @@ public class Sentinel : Enemy
             Console.WriteLine ("Critical hit!");
             player.TakeDamage(AttackPower * 2);
         }
+        else
+        {
+            player.TakeDamage(AttackPower);
+        }
     }
 }

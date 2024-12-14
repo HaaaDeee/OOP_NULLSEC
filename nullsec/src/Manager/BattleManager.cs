@@ -52,9 +52,12 @@ public class BattleManager
             } while (enemy.Health > 0 && player.Health > 0);
             if(player.Health < 0)
             {
-                Console.WriteLine("Quest failed, returning to main menu");
-                return;
+                Console.WriteLine("You lose!");
+            } else {
+                quest.isComplete = true;
+                quest.EndQuest();
             }
         }
+        player.Health = player.MaxHealth;
     }
 }

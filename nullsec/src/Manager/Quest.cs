@@ -20,7 +20,10 @@ public class Quest
         // reward player
         if (isComplete)
         {
-            Console.WriteLine("Quest complete! You have been rewarded with 100 gold.");
+            Console.WriteLine("Quest complete!");
+            PlayerCharacter.GetInstance().LevelUp();
+        } else {
+            Console.WriteLine("Big Dawg");
         }
     }
 }

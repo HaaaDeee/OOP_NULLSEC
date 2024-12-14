@@ -5,6 +5,7 @@ public class PlayerCharacter
     public string CharacterName { get ; set ; }
     public string TechTree { get ; set ; } // Tech Trees : Technician , Hacker , Enforcer , Infiltrator
     public int Level { get ; set ; }
+    public int MaxSkillPoints { get ; set ; }
     public int SkillPoints { get ; set ; }
     public int MaxHealth { get ; set ; }
     public int Health { get ; set ; }
@@ -17,10 +18,35 @@ public class PlayerCharacter
         CharacterName = characterName ;
         TechTree = techTree ;
         Level = 1;
-        SkillPoints = 0;
-        Health = 100;
+        MaxSkillPoints = 0;
+        SkillPoints = MaxSkillPoints;
+        MaxHealth = 100;
         Attack = 10;
         Defense = 5;
+        switch(TechTree.ToLower()) {
+            case "technician":
+                Attack += 5;
+                MaxHealth += 10;
+                break;
+            case "hacker":
+                Attack += 5;
+                Defense += 5;
+                MaxHealth -= 25;
+                break;
+            case "enforcer":
+                Attack -= 5;
+                Defense += 5;
+                MaxHealth += 20;
+                break;
+            case "infiltrator":
+                Attack += 10;
+                Defense = 0;
+                MaxHealth -= 10;
+                break;
+            default:
+                break;
+        }
+        Health = MaxHealth;
         instance = this;
     }
     // Singleton instance retrieval method
@@ -41,7 +67,13 @@ public class PlayerCharacter
     public void LevelUp ()
     {
         Level++;
-        SkillPoints++;
+        int[] ValidLevels = [1,2,5,6,10,12,15,17,20,23,25,28,30];
+        bool isValid = false;
+        for(int i=0; i<ValidLevels.Length; i++) {
+            if(Level == ValidLevels[i] || Level%5 == 0) {
+                SkillPoints++;
+            }
+        }
         Console.WriteLine ($"{ CharacterName } leveled up to { Level }! Skill Points : { SkillPoints }");
     }
     // Method to allocate skill points to increase stats
@@ -49,7 +81,7 @@ public class PlayerCharacter
     {
         if(SkillPoints > 0)
         {
-            switch ( skill . ToLower ())
+            switch (skill.ToLower())
             {
                 case " health ":
                 Health += 10;
@@ -82,7 +114,7 @@ public class PlayerCharacter
     // Method for taking damage
     public void TakeDamage (int damage )
     {
-        int damageTaken = Math .Max( damage - Defense , 0);
+        int damageTaken = Math.Max( damage - Defense , 0);
         Health -= damageTaken ;
         Console . WriteLine ($"{ CharacterName } took { damageTaken } damage. Health is now { Health }");
         if ( Health <= 0)

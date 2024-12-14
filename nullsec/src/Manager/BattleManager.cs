@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 public class BattleManager
 {
     private PlayerCharacter? player;
-    private string enemy;
-    private int progress;
+    private Quest? quest;
     private int choice;
-    public BattleManager(string enemy, int progress)
+    public BattleManager(Quest? quest)
     {
-        this.enemy = enemy;
-        this.progress = progress;
+        this.quest = quest;
         choice = -1;
         player = PlayerCharacter.GetInstance();
     }
     public void StartBattle()
     {
-        Enemy? enemy = null;
-        for (int i = 0; i < progress; i++)
+        if(quest == null)
         {
-            enemy = EnemyFactory.CreateEnemy(this.enemy);
+            throw new Exception("Quest is null");
+        }
+        Enemy? enemy = null;
+        for (int i = 0; i < quest.objective; i++)
+        {
+            enemy = EnemyFactory.CreateEnemy(quest.enemy);
             if (player == null || enemy == null)
             {
                 throw new Exception("Player or enemy is null");

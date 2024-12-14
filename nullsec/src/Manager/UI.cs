@@ -212,7 +212,24 @@ public class UI
     }
 
     private static void SelectMission() {
-
+        QuestManager questManager = new QuestManager();
+        BattleManager battleManager;
+        ConsoleKeyInfo input;
+        int choice = -1;
+        // Generate enemy list
+        questManager.GenerateEnemyList();
+        Console.WriteLine("Daftar Quest:");
+        questManager.ShowQuests();
+        while(choice < 1 || choice > 3) {
+            Console.WriteLine("Pilih Quest:");
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
+            if(choice < 1 || choice > 3) {
+                Console.WriteLine("Invalid quest number");
+            }
+        }
+        battleManager = new BattleManager(questManager.takeQuest(choice));
+        battleManager.StartBattle();
     }
 
     private static void ShowInventory() {

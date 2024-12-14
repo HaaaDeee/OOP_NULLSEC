@@ -109,7 +109,7 @@ public class PlayerCharacter
     // Method to display the character’s current status
     public void DisplayStatus ()
     {
-        Console.WriteLine ($" Name : { CharacterName }, Tech Tree : {TechTree }, Level : { Level }, Health : { Health }, Attack : {Attack }, Defense : { Defense }, Skill Points : { SkillPoints }");
+        Console.WriteLine ($" Name : { CharacterName }\nTech Tree : {TechTree }\nLevel : { Level }\nHealth : { Health }\nAttack : {Attack }\nDefense : { Defense }\nSkill Points : { SkillPoints }");
     }
     // Method for taking damage
     public void TakeDamage (int damage )

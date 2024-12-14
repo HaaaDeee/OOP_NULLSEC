@@ -33,9 +33,8 @@ public class UI
         Console.WriteLine("============================================");
         Console.WriteLine("Pilihan Aksi : ");
         Console.WriteLine("1. Attack");
-        Console.WriteLine("2. Skill"); //skill (bisa di skip)
-        Console.WriteLine("3. Item");
-        Console.WriteLine("4. Kabur");
+        Console.WriteLine("2. Inventory"); //skill (bisa di skip)
+        Console.WriteLine("3. Kabur");
         Console.WriteLine("============================================");
         Console.WriteLine("Pilihan anda :");
         string? choice = Console.ReadLine();
@@ -168,6 +167,7 @@ public class UI
     public static void GameScene() {
         int choice = -999;
         ConsoleKeyInfo input;
+        Console.WriteLine();
         string[] menus = [
             "#######################################################",
             "######                                           ######",
@@ -208,7 +208,11 @@ public class UI
     }
 
     private static void ShowStatus() {
-
+        if(player == null) {
+            throw new Exception("Player is null");
+        }
+        player.DisplayStatus();
+        Console.ReadKey();
     }
 
     private static void SelectMission() {

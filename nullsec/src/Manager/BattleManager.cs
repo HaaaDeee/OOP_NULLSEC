@@ -8,11 +8,13 @@ public class BattleManager
     private PlayerCharacter? player;
     private Quest? quest;
     private int choice;
+    private bool isMove;
     public BattleManager(Quest? quest)
     {
         this.quest = quest;
         choice = -1;
         player = PlayerCharacter.GetInstance();
+        isMove = false;
     }
     public void StartBattle()
     {
@@ -36,28 +38,44 @@ public class BattleManager
                 {
                     case 1:
                         player.AttackEnemy(enemy);
+                        isMove = true;
                         break;
                     case 2:
                         //open inventory
+                        isMove = true;
                         break;
                     case 3:
                         //nigerundayo
+                        Console.WriteLine("You ran away");
                         break;
                     default:
                         Console.WriteLine("Invalid choice");
                         break;
                 }
                 //enemy turn
-                enemy.Attack(player);
-            } while (enemy.Health > 0 && player.Health > 0);
-            if(player.Health < 0)
+                if (enemy.Health > 0 && isMove == true)
+                {
+                    enemy.Attack(player);
+                    isMove = false;
+                }
+            } while (enemy.Health > 0 && player.Health > 0 && choice != 3);
+            if (player.Health < 0 || choice == 3)
             {
-                Console.WriteLine("You lose!");
-            } else {
-                quest.isComplete = true;
-                quest.EndQuest();
+                break;
             }
         }
+        if(player == null)
+        {
+            throw new Exception("Player is null");
+        }
+        if(player.Health < 0 || choice == 3)
+        {
+            Console.WriteLine("You lose! Quest failed.");
+        } else {
+            quest.isComplete = true;
+            quest.EndQuest();
+        }
+        System.Threading.Thread.Sleep(3000);
         player.Health = player.MaxHealth;
     }
 }

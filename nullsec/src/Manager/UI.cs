@@ -176,7 +176,8 @@ public class UI
             "##       1. LIHAT STATUS                             ##",
             "##       2. PILIH MISI                               ##",
             "##       3. LIHAT INVENTORY                          ##",
-            "##       4. KELUAR                                   ##",
+            "##       4. SIMPAN PERMAINAN                         ##",
+            "##       5. KELUAR DARI PERMAINAN                    ##",
             "###                                                 ###",
             "######                                           ######",
             "#######################################################"
@@ -200,6 +201,9 @@ public class UI
                     ShowInventory();
                     break;
                 case 4:
+                    SaveGame();
+                    break;
+                case 5:
                     break;
                 default:
                     Console.WriteLine("    !!PERHATIAN!!\n    Mohon hanya pilih opsi yang tersedia.");
@@ -240,5 +244,33 @@ public class UI
 
     private static void ShowInventory() {
 
+    }
+
+    private static void SaveGame() {
+        int choice = -1;
+        ConsoleKeyInfo input;
+        GameManager gameManager = new GameManager();
+        while(choice < 1 || choice > 3) {
+            Console.Clear();
+            Console.WriteLine("Pilih slot file untuk menyimpan permainan");
+            Console.WriteLine("1. Save 1");
+            Console.WriteLine("2. Save 2");
+            Console.WriteLine("3. Save 3");
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
+            if(choice < 1 || choice > 3) {
+                Console.WriteLine("Mohon hanya pilih opsi yang tersedia.");
+            }
+        }
+        gameManager.SaveGame(choice);
+        Console.Write("\nSaving game to slot "+choice+"\n{");
+        for(int i=0; i<5; i++) {
+            Console.Write("=>");
+            System.Threading.Thread.Sleep(400);
+        }
+        Console.WriteLine("}");
+        Console.WriteLine("Game berhasil disimpan.");
+        System.Threading.Thread.Sleep(2000);
+        Console.Clear();
     }
 }

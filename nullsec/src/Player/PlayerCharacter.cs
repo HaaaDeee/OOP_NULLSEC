@@ -168,8 +168,8 @@ public class PlayerCharacter
         switch (type.ToLower())
         {
             case "health":
+                Math.Max(Health += buff, MaxHealth);
                 Health += buff;
-                Console.WriteLine($"{CharacterName} increased Health to {Health}");
                 break;
             case "attack":
                 Attack += buff;

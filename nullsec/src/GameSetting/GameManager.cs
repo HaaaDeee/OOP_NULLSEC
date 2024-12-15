@@ -29,8 +29,6 @@ class GameState
 
 public class GameManager
 {
-    StreamReader loader;
-    StreamWriter saver;
     GameState gameState = new GameState();
     
     public void SaveGame(int choice)
@@ -65,6 +63,7 @@ public class GameManager
                 if(!string.IsNullOrEmpty(json)) {
                     gameState = JsonSerializer.Deserialize<GameState>(json);
                     GameStateUpdate();
+                    UI.GameScene();
                 } else {
                     Console.WriteLine("Save file tidak ada isinya.");
                     Console.ReadKey();
@@ -94,6 +93,7 @@ public class GameManager
 
                     gameState = JsonSerializer.Deserialize<GameState>(json);
                     GameStateUpdate();
+                    UI.GameScene();
                 } else {
                     Console.WriteLine("Save file tidak ada isinya.");
                     Console.ReadKey();

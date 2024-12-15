@@ -33,14 +33,12 @@ public class Program
                     System.Console.WriteLine("Pencet enter bila ya, selainnya bila tidak");
                     if(Console.ReadKey().Key == ConsoleKey.Enter) {
                         ContinueGame();
-                        UI.GameScene();
                     } else {
                         Console.Clear();
                     }
                     break;
                 case 3:
                     LoadGame();
-                    UI.GameScene();
                     break;
                 case 4:
                     break;

@@ -110,20 +110,22 @@ public class PlayerCharacter
                 case " health ":
                 Health += 10;
                 Console.WriteLine($"{ CharacterName } increased Health to { Health }");
+                SkillPoints --;
                 break ;
                 case " attack ":
                 Attack += 2;
                 Console.WriteLine($"{ CharacterName } increased Attack to { Attack }");
+                SkillPoints --;
                 break ;
                 case " defense ":
                 Defense += 2;
                 Console.WriteLine($"{ CharacterName } increased Defense to { Defense }");
+                SkillPoints --;
                 break ;
                 default :
                 Console.WriteLine(" Invalid skill choice!");
                 return ;
             }
-            SkillPoints --;
         }
         else
         {

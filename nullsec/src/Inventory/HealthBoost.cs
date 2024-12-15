@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 public class HealthBoost : Item
 {
-    public override string Name => " Health Boost ";
+    public override string name => "Health Boost";
     public override void Use ( PlayerCharacter player )
     {
         player.getBuff("health", 20 + player.Level/2);

@@ -182,7 +182,7 @@ public class UI
             "######                                           ######",
             "#######################################################"
         ];
-        while(choice != 4) {
+        while(choice != 5) {
             for(int i = 0; i<menus.Length; i++) {
                 Console.WriteLine(menus[i]);
             }
@@ -243,7 +243,12 @@ public class UI
     }
 
     private static void ShowInventory() {
-
+        PlayerCharacter player = PlayerCharacter.GetInstance();
+        Console.WriteLine("Your Inventory:");
+        foreach(Item item in player.inventory.items) {
+            Console.WriteLine(item.name);
+        }
+        Console.ReadKey();
     }
 
     private static void SaveGame() {
@@ -263,6 +268,7 @@ public class UI
             }
         }
         gameManager.SaveGame(choice);
+        File.WriteAllText("last.txt", choice.ToString());
         Console.Write("\nSaving game to slot "+choice+"\n{");
         for(int i=0; i<5; i++) {
             Console.Write("=>");

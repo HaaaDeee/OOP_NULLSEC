@@ -13,7 +13,7 @@ public class PlayerCharacter
     public int Defense { get ; set ; }
     public InventorySystem inventory { get ; set ; }
     // Private constructor to prevent instantiation from outside
-    private PlayerCharacter ( string characterName , string techTree)
+    private PlayerCharacter( string characterName , string techTree)
     {
         CharacterName = characterName ;
         TechTree = techTree ;
@@ -48,10 +48,11 @@ public class PlayerCharacter
         }
         Health = MaxHealth;
         instance = this;
+        inventory = new InventorySystem();
     }
 
     
-    private PlayerCharacter ()
+    private PlayerCharacter()
     {
         CharacterName = null ;
         TechTree = null ;
@@ -63,12 +64,13 @@ public class PlayerCharacter
         Defense = 5;
         Health = MaxHealth;
         instance = this;
+        inventory = new InventorySystem();
     }
 
     // Singleton instance retrieval method
-    public static PlayerCharacter GetInstance ( string characterName , string techTree )
+    public static PlayerCharacter GetInstance( string characterName , string techTree )
     {
-        if ( instance == null )
+        if( instance == null )
         {
             instance = new PlayerCharacter( characterName, techTree );
         }
@@ -76,9 +78,9 @@ public class PlayerCharacter
     }
 
     
-    public static PlayerCharacter GetInstance ( )
+    public static PlayerCharacter GetInstance( )
     {
-        if ( instance == null )
+        if( instance == null )
         {
             instance = new PlayerCharacter( );
         }
@@ -86,7 +88,7 @@ public class PlayerCharacter
     }
 
     // Level up method , increases level and grants skill points
-    public void LevelUp ()
+    public void LevelUp()
     {
         Level++;
         int[] ValidLevels = [1,2,5,6,10,12,15,17,20,23,25,28,30];
@@ -96,65 +98,71 @@ public class PlayerCharacter
                 SkillPoints++;
             }
         }
-        Console.WriteLine ($"{ CharacterName } leveled up to { Level }! Skill Points : { SkillPoints }");
+        Console.WriteLine($"{ CharacterName } leveled up to { Level }! Skill Points : { SkillPoints }");
     }
     // Method to allocate skill points to increase stats
-    public void AllocateSkillPoint ( string skill )
+    public void AllocateSkillPoint( string skill )
     {
         if(SkillPoints > 0)
         {
-            switch (skill.ToLower())
+            switch(skill.ToLower())
             {
                 case " health ":
                 Health += 10;
-                Console.WriteLine ($"{ CharacterName } increased Health to { Health }");
+                Console.WriteLine($"{ CharacterName } increased Health to { Health }");
                 break ;
                 case " attack ":
                 Attack += 2;
-                Console.WriteLine ($"{ CharacterName } increased Attack to { Attack }");
+                Console.WriteLine($"{ CharacterName } increased Attack to { Attack }");
                 break ;
                 case " defense ":
                 Defense += 2;
-                Console.WriteLine ($"{ CharacterName } increased Defense to { Defense }");
+                Console.WriteLine($"{ CharacterName } increased Defense to { Defense }");
                 break ;
                 default :
-                Console.WriteLine (" Invalid skill choice!");
+                Console.WriteLine(" Invalid skill choice!");
                 return ;
             }
             SkillPoints --;
         }
         else
         {
-            Console.WriteLine ("No skill points available.");
+            Console.WriteLine("No skill points available.");
         }
     }
     // Method to display the character’s current status
-    public void DisplayStatus ()
+    public void DisplayStatus()
     {
-        Console.WriteLine ($" Name : { CharacterName }\nTech Tree : {TechTree }\nLevel : { Level }\nHealth : { Health }\nAttack : {Attack }\nDefense : { Defense }\nSkill Points : { SkillPoints }");
+        Console.WriteLine($"Name : { CharacterName }");
+        Console.WriteLine($"Tech Tree : {TechTree }");
+        Console.WriteLine($"Level : { Level }");
+        Console.WriteLine($"Health : { Health }");
+        Console.WriteLine($"Attack : {Attack }");
+        Console.WriteLine($"Defense : { Defense }");
+        Console.WriteLine($"Skill Points : { SkillPoints }");
     }
     // Method for taking damage
-    public void TakeDamage (int damage )
+    public void TakeDamage(int damage )
     {
         int damageTaken = Math.Max( damage - Defense , 0);
         Health -= damageTaken ;
-        Console . WriteLine ($"{ CharacterName } took { damageTaken } damage. Health is now { Health }");
-        if ( Health <= 0)
+        Console . WriteLine($"{ CharacterName } took { damageTaken } damage. Health is now { Health }");
+        if( Health <= 0)
         {
-            Console . WriteLine ($"{ CharacterName } has been defeated.");
+            Console . WriteLine($"{ CharacterName } has been defeated.");
             // Handle character defeat logic
         }
     }
     // Method for attacking an enemy
-    public void AttackEnemy (Enemy enemy)
+    public void AttackEnemy(Enemy enemy)
     {
-        Console . WriteLine ($"{ CharacterName } attacks with { Attack } power!");
+        Console . WriteLine($"{ CharacterName } attacks with { Attack } power!");
         // Additional logic for interacting with enemy
-        Random random = new Random ();
+        Random random = new Random();
         int critical = random.Next(0, 100);
-        if ( critical < 5)
+        if( critical < 5)
         {
-            Console . WriteLine ("Critical hit!");
+            Console . WriteLine("Critical hit!");
             enemy.Health -= Attack * 2;
         }
         else
@@ -165,7 +173,7 @@ public class PlayerCharacter
 
     public void getBuff(string type, int buff)
     {
-        switch (type.ToLower())
+        switch(type.ToLower())
         {
             case "health":
                 Math.Max(Health += buff, MaxHealth);

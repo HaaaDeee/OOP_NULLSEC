@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 public class AttackBoost : Item
 {
-    public override string Name => " Attack Boost ";
+    public override string name => "Attack Boost";
     public override void Use ( PlayerCharacter player )
     {
-        player.getBuff("attack", 5);
+        player.getBuff("attack", 5 + player.Level/2);
         Console.WriteLine($"{ player.CharacterName } uses Attack Boost. Attack is now{ player.Attack }");
     }
 }

@@ -5,6 +5,6 @@ using System.Threading.Tasks;
 
 public abstract class Item
 {
-    public abstract string Name { get ; }
+    public abstract string name { get ; }
     public abstract void Use ( PlayerCharacter player );
 }

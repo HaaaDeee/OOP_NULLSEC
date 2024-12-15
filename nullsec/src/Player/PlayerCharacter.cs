@@ -222,7 +222,7 @@ public class PlayerCharacter
         Random random = new Random();
         int rand = random.Next(0, 100);
         if(rand < 50) {
-            rand = random.Next(1, 2);
+            rand = random.Next(1, 3);
             switch(rand) {
                 case 1:
                     inventory.AddItem(new AttackBoost());

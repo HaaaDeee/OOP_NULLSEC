@@ -42,8 +42,10 @@ public class GameManager
                 string json = JsonSerializer.Serialize(gameState);
                 string filepath = "savefile"+choice+".json";
                 File.WriteAllText(filepath, json);
+                Console.Clear();
             } else {
                 Console.WriteLine("No save file found.");
+                Console.ReadKey();
             }
         }
         catch (Exception ex)
@@ -59,8 +61,14 @@ public class GameManager
             if (choice > 0 && choice < 4) {
                 string filepath = "savefile"+choice+".json";
                 string json = File.ReadAllText(filepath);
-                gameState = JsonSerializer.Deserialize<GameState>(json);
-                GameStateUpdate();
+                Console.Clear();
+                if(!string.IsNullOrEmpty(json)) {
+                    gameState = JsonSerializer.Deserialize<GameState>(json);
+                    GameStateUpdate();
+                } else {
+                    Console.WriteLine("Save file tidak ada isinya.");
+                    Console.ReadKey();
+                }
             } else {
                 Console.WriteLine("No save file found.");
             }
@@ -71,6 +79,36 @@ public class GameManager
         }
     }
     
+    public void LoadPreviousGame()
+    {
+        try
+        {
+            string last = File.ReadAllText("last.txt");
+            if(!string.IsNullOrEmpty(last)) {
+                int choice;
+                Int32.TryParse(last, out choice);
+                string filepath = "savefile"+choice+".json";
+                string json = File.ReadAllText(filepath);
+                Console.Clear();
+                if(!string.IsNullOrEmpty(json)) {
+
+                    gameState = JsonSerializer.Deserialize<GameState>(json);
+                    GameStateUpdate();
+                } else {
+                    Console.WriteLine("Save file tidak ada isinya.");
+                    Console.ReadKey();
+                }
+            } else {
+                Console.WriteLine("Save file tidak ada isinya.");
+                Console.ReadKey();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading game: {ex.Message}");
+        }
+    }
+
     // Data dari {Player, etc.} mengupdate GameState
     private void UpdateGameState() {
         PlayerCharacter player = PlayerCharacter.GetInstance();

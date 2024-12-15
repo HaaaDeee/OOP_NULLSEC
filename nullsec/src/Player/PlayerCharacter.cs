@@ -49,6 +49,22 @@ public class PlayerCharacter
         Health = MaxHealth;
         instance = this;
     }
+
+    
+    private PlayerCharacter ()
+    {
+        CharacterName = null ;
+        TechTree = null ;
+        Level = 1;
+        MaxSkillPoints = 0;
+        SkillPoints = MaxSkillPoints;
+        MaxHealth = 100;
+        Attack = 10;
+        Defense = 5;
+        Health = MaxHealth;
+        instance = this;
+    }
+
     // Singleton instance retrieval method
     public static PlayerCharacter GetInstance ( string characterName , string techTree )
     {
@@ -58,11 +74,17 @@ public class PlayerCharacter
         }
         return instance ;
     }
-    // Overload
-    public static PlayerCharacter? GetInstance ()
+
+    
+    public static PlayerCharacter GetInstance ( )
     {
+        if ( instance == null )
+        {
+            instance = new PlayerCharacter( );
+        }
         return instance ;
     }
+
     // Level up method , increases level and grants skill points
     public void LevelUp ()
     {

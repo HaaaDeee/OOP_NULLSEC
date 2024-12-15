@@ -33,12 +33,14 @@ public class Program
                     System.Console.WriteLine("Pencet enter bila ya, selainnya bila tidak");
                     if(Console.ReadKey().Key == ConsoleKey.Enter) {
                         ContinueGame();
+                        UI.GameScene();
                     } else {
                         Console.Clear();
                     }
                     break;
                 case 3:
                     LoadGame();
+                    UI.GameScene();
                     break;
                 case 4:
                     break;
@@ -51,12 +53,14 @@ public class Program
     }
 
     public static void ContinueGame() {
+        GameManager gameManager = new GameManager();
         Console.Write("Loading Last Savefile\n{");
         for(int i=0; i<5; i++) {
             Console.Write("=>");
             System.Threading.Thread.Sleep(400);
         }
         Console.WriteLine("}");
+        gameManager.LoadPreviousGame();
         Console.Clear();
     }
 
@@ -73,7 +77,14 @@ public class Program
             input = Console.ReadKey();
             Int32.TryParse(input.KeyChar.ToString(), out choice);
             if(choice != 4) {
+                Console.Write("\nLoading Save "+choice+"\n{");
+                for(int i=0; i<5; i++) {
+                    Console.Write("=>");
+                    System.Threading.Thread.Sleep(400);
+                }
+                Console.WriteLine("}");
                 gameManager.LoadGame(choice);
+                Console.Clear();
             }
         }
     }

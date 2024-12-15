@@ -168,6 +168,7 @@ public class UI
         int choice = -999;
         ConsoleKeyInfo input;
         Console.WriteLine();
+        player = PlayerCharacter.GetInstance();
         string[] menus = [
             "#######################################################",
             "######                                           ######",
@@ -186,6 +187,7 @@ public class UI
             }
             input = Console.ReadKey();
             Int32.TryParse(input.KeyChar.ToString(), out choice);
+            Console.Clear();
             switch (choice)
             {
                 case 1:

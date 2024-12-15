@@ -2,11 +2,10 @@ using System;
 
 public static class EnemyFactory
 {
-    
-    int characterLevel = PlayerCharacter.GetInstance().Level;
 
     public static Enemy CreateEnemy ( string enemyType )
     {
+        int characterLevel = PlayerCharacter.GetInstance().Level;
         return enemyType.ToLower() switch
         {
         "sentinel" => new Sentinel (characterLevel),

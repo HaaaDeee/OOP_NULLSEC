@@ -9,9 +9,14 @@ public class PlayerCharacter
     public int SkillPoints { get ; set ; }
     public int MaxHealth { get ; set ; }
     public int Health { get ; set ; }
+    public int MaxAttack { get ; set ; }
     public int Attack { get ; set ; }
+    public int MaxDefense { get ; set ; }
     public int Defense { get ; set ; }
     public InventorySystem inventory { get ; set ; }
+
+    
+    int temp = 0;
     // Private constructor to prevent instantiation from outside
     private PlayerCharacter( string characterName , string techTree)
     {
@@ -21,32 +26,34 @@ public class PlayerCharacter
         MaxSkillPoints = 0;
         SkillPoints = MaxSkillPoints;
         MaxHealth = 100;
-        Attack = 10;
-        Defense = 5;
+        MaxAttack = 10;
+        MaxDefense = 5;
         switch(TechTree.ToLower()) {
             case "technician":
-                Attack += 5;
+                MaxAttack += 5;
                 MaxHealth += 10;
                 break;
             case "hacker":
-                Attack += 5;
-                Defense += 5;
+                MaxAttack += 5;
+                MaxDefense += 5;
                 MaxHealth -= 25;
                 break;
             case "enforcer":
-                Attack -= 5;
-                Defense += 5;
+                MaxAttack -= 5;
+                MaxDefense += 5;
                 MaxHealth += 20;
                 break;
             case "infiltrator":
-                Attack += 10;
-                Defense = 0;
+                MaxAttack += 10;
+                MaxDefense = 0;
                 MaxHealth -= 10;
                 break;
             default:
                 break;
         }
         Health = MaxHealth;
+        Attack = MaxAttack;
+        Defense = MaxDefense;
         instance = this;
         inventory = new InventorySystem();
     }
@@ -60,9 +67,11 @@ public class PlayerCharacter
         MaxSkillPoints = 0;
         SkillPoints = MaxSkillPoints;
         MaxHealth = 100;
-        Attack = 10;
-        Defense = 5;
+        MaxAttack = 10;
+        MaxDefense = 5;
         Health = MaxHealth;
+        Attack = MaxAttack;
+        Defense = MaxDefense;
         instance = this;
         inventory = new InventorySystem();
     }
@@ -95,9 +104,11 @@ public class PlayerCharacter
         bool isValid = false;
         for(int i=0; i<ValidLevels.Length; i++) {
             if(Level == ValidLevels[i] || Level%5 == 0) {
-                SkillPoints++;
+                isValid = true;
+                break;
             }
         }
+        if(isValid) {SkillPoints++;}
         Console.WriteLine($"{ CharacterName } leveled up to { Level }! Skill Points : { SkillPoints }");
     }
     // Method to allocate skill points to increase stats
@@ -107,29 +118,32 @@ public class PlayerCharacter
         {
             switch(skill.ToLower())
             {
-                case " health ":
-                Health += 10;
-                Console.WriteLine($"{ CharacterName } increased Health to { Health }");
+                case "health":
+                MaxHealth += 10;
+                Health = MaxHealth;
+                Console.WriteLine($"\n{ CharacterName } increased Health to { Health }");
                 SkillPoints --;
                 break ;
-                case " attack ":
-                Attack += 2;
-                Console.WriteLine($"{ CharacterName } increased Attack to { Attack }");
+                case "attack":
+                MaxAttack += 2;
+                Attack = MaxAttack;
+                Console.WriteLine($"\n{ CharacterName } increased Attack to { Attack }");
                 SkillPoints --;
                 break ;
-                case " defense ":
-                Defense += 2;
-                Console.WriteLine($"{ CharacterName } increased Defense to { Defense }");
+                case "defense":
+                MaxDefense += 2;
+                Defense = MaxDefense;
+                Console.WriteLine($"\n{ CharacterName } increased Defense to { Defense }");
                 SkillPoints --;
                 break ;
                 default :
-                Console.WriteLine(" Invalid skill choice!");
+                Console.WriteLine("\nInvalid skill choice!");
                 return ;
             }
         }
         else
         {
-            Console.WriteLine("No skill points available.");
+            Console.WriteLine("\nNo skill points available.");
         }
     }
     // Method to display the character’s current status
@@ -180,18 +194,45 @@ public class PlayerCharacter
             case "health":
                 Math.Max(Health += buff, MaxHealth);
                 Health += buff;
+                inventory.UseItem("Health Boost", instance);
                 break;
             case "attack":
                 Attack += buff;
+                inventory.UseItem("Attack Boost", instance);
                 Console.WriteLine($"{CharacterName} increased Attack to {Attack}");
                 break;
             case "defense":
                 Defense += buff;
+                inventory.UseItem("Defense Boost", instance);
                 Console.WriteLine($"{CharacterName} increased Defense to {Defense}");
                 break;
             default:
                 Console.WriteLine("Invalid buff type.");
                 return;
+        }
+    }
+
+    public void DisableBuff() {
+        Health = MaxHealth;
+        Attack = MaxAttack;
+        Defense = MaxDefense;
+    }
+
+    public void RewardItem() {
+        Random random = new Random();
+        int rand = random.Next(0, 100);
+        if(rand < 50) {
+            rand = random.Next(1, 2);
+            switch(rand) {
+                case 1:
+                    inventory.AddItem(new AttackBoost());
+                    break;
+                case 2:
+                    inventory.AddItem(new HealthBoost());
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

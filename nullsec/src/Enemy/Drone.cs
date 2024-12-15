@@ -2,13 +2,13 @@ using System;
 
 public class Drone : Enemy
 {
-    public override string Faction;
+    public override string Faction {get;}
     public override int MaxHealth { get ; set ; }
-    public override int Health { get; set; };
-    public override int AttackPower;
+    public override int Health { get; set; }
+    public override int AttackPower { get ; }
 
     public Drone(int playerLevel){
-        Faction = "Drone";
+        Faction = new string("Drone");
         MaxHealth = 35 + (playerLevel * 4);
         Health = MaxHealth;
         AttackPower = 8 + (playerLevel * 1);

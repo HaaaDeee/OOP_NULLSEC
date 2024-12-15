@@ -174,15 +174,16 @@ public class UI
             "######                                           ######",
             "###                                                 ###",
             "##       1. LIHAT STATUS                             ##",
-            "##       2. PILIH MISI                               ##",
-            "##       3. LIHAT INVENTORY                          ##",
-            "##       4. SIMPAN PERMAINAN                         ##",
-            "##       5. KELUAR DARI PERMAINAN                    ##",
+            "##       2. ATUR SKILLPOINT                          ##",
+            "##       3. PILIH MISI                               ##",
+            "##       4. LIHAT INVENTORY                          ##",
+            "##       5. SIMPAN PERMAINAN                         ##",
+            "##       6. KELUAR DARI PERMAINAN                    ##",
             "###                                                 ###",
             "######                                           ######",
             "#######################################################"
         ];
-        while(choice != 5) {
+        while(choice != 6) {
             for(int i = 0; i<menus.Length; i++) {
                 Console.WriteLine(menus[i]);
             }
@@ -195,15 +196,18 @@ public class UI
                     ShowStatus();
                     break;
                 case 2:
-                    SelectMission();
+                    ApplySkillPoints();
                     break;
                 case 3:
-                    ShowInventory();
+                    SelectMission();
                     break;
                 case 4:
-                    SaveGame();
+                    ShowInventory();
                     break;
                 case 5:
+                    SaveGame();
+                    break;
+                case 6:
                     break;
                 default:
                     Console.WriteLine("    !!PERHATIAN!!\n    Mohon hanya pilih opsi yang tersedia.");
@@ -219,6 +223,40 @@ public class UI
         }
         player.DisplayStatus();
         Console.ReadKey();
+    }
+
+    private static void ApplySkillPoints() {
+        if(player == null) {
+            throw new Exception("Player is null");
+        }
+        ConsoleKeyInfo input;
+        int choice = -999;
+        while(choice != 4) {
+            Console.WriteLine("Status Player saat ini");
+            player.DisplayStatus();
+            Console.WriteLine("Pilih stats yang anda ingin tambah menggunakan skill point yang tersedia");
+            Console.WriteLine("1. Health");
+            Console.WriteLine("2. Attack");
+            Console.WriteLine("3. Defense");
+            Console.WriteLine("\n4. Kembali ke main menu");
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
+            switch(choice) {
+                case 1:
+                    player.AllocateSkillPoint("health");
+                    break;
+                case 2:
+                    player.AllocateSkillPoint("attack");
+                    break;
+                case 3:
+                    player.AllocateSkillPoint("defense");
+                    break;
+                default:
+                    break;
+            }
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 
     private static void SelectMission() {
@@ -278,5 +316,38 @@ public class UI
         Console.WriteLine("Game berhasil disimpan.");
         System.Threading.Thread.Sleep(2000);
         Console.Clear();
+    }
+
+    public static int ChooseItem() {
+        int choice = -1;
+        ConsoleKeyInfo input;
+        int healthcount = 0;
+        int attackcount = 0;
+        foreach(Item item in player.inventory.items) {
+            switch(item.name) {
+                case "Health Boost":
+                    healthcount++;
+                    break;
+                case "Attack Boost":
+                    attackcount++;
+                    break;
+                default:
+                    break;
+            }
+        }
+        Console.WriteLine("Anda memiliki:");
+        Console.WriteLine("1. "+healthcount.ToString()+"x Health Boost");
+        Console.WriteLine("2. "+attackcount.ToString()+"x Attack Boost");
+        Console.WriteLine("Pilihan anda:");
+        while(choice < 1 || choice > 2) {
+            input = Console.ReadKey();
+            Int32.TryParse(input.KeyChar.ToString(), out choice);
+            if((choice == 1 && healthcount > 0) || (choice == 2 && attackcount > 0)) {
+                return choice;
+            } else {
+                Console.WriteLine("Item tidak cukup");
+            }
+        }
+        return -1;
     }
 }

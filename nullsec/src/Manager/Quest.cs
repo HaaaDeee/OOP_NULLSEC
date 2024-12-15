@@ -22,6 +22,8 @@ public class Quest
         {
             Console.WriteLine("Quest complete!");
             PlayerCharacter.GetInstance().LevelUp();
+            PlayerCharacter.GetInstance().DisableBuff();
+            PlayerCharacter.GetInstance().RewardItem();
         } else {
             Console.WriteLine("Big Dawg");
         }

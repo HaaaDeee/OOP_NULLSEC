@@ -11,9 +11,13 @@ public class InventorySystem
         items.Add( item );
         Console.WriteLine ($"{ item.name } added to inventory.");
     }
-    public void UseItem ( Item item , PlayerCharacter player )
+    public void UseItem ( string name , PlayerCharacter player )
     {
-        item.Use( player );
-        items.Remove( item );
+        foreach(Item item in items) {
+            if (name == item.name) {
+                items.Remove(item);
+                break;
+            }
+        }
     }
 }

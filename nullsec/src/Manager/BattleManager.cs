@@ -42,6 +42,16 @@ public class BattleManager
                         break;
                     case 2:
                         //open inventory
+                        switch(UI.ChooseItem()) {
+                            case 1:
+                                new HealthBoost().Use(player);
+                                break;
+                            case 2:
+                                new AttackBoost().Use(player);
+                                break;
+                            default:
+                                break;
+                        }
                         isMove = true;
                         break;
                     case 3:
@@ -68,7 +78,7 @@ public class BattleManager
         {
             throw new Exception("Player is null");
         }
-        if(player.Health < 0 || choice == 3)
+        if(player.Health <= 0 || choice == 3)
         {
             Console.WriteLine("You lose! Quest failed.");
         } else {

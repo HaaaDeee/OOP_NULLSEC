@@ -2,10 +2,10 @@ using System;
 
 public class Wolf : Enemy
 {
-    public override string Faction => " Wolves ";
+    public override string Faction {get;}
     public override int MaxHealth { get ; set ; }
     public override int Health { get ; set ; }
-    public override int AttackPower;
+    public override int AttackPower { get ; }
 
     public Wolf(int playerLevel){
         Faction = "Wolf";

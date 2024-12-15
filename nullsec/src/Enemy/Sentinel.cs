@@ -1,10 +1,10 @@
 using System;
 public class Sentinel : Enemy
 {
-    public override string Faction => " Sentinel ";
+    public override string Faction {get;}
     public override int MaxHealth { get ; set ; }
     public override int Health { get ; set ; } 
-    public override int AttackPower;
+    public override int AttackPower { get ; }
 
     public Sentinel(int playerLevel){
         Faction = "Sentinel";

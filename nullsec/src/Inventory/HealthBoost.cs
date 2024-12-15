@@ -8,7 +8,7 @@ public class HealthBoost : Item
     public override string name => "Health Boost";
     public override void Use ( PlayerCharacter player )
     {
-        player.getBuff("health", 20 + player.Level/2);
+        player.getBuff("health", 20 + (player.Level/2)*2);
         Console.WriteLine ($"{ player.CharacterName } uses Health Boost. Health is now { player.Health }");
     }
 }
